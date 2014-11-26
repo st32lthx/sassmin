@@ -1,0 +1,61 @@
+/*  
+##`strip($value)`
+
+### Description ###
+
+Remove units or non-string elements immediately followed by numbers.
+
+### Parameters: ###
+
+2. __$value__ : *number[unit]* The input with or without unit to be stripped.
+
+### Usage ###
+  Can be called anywhere as a function in your sass. Useful when you need to strip off stuff that are immediately followed after a number.
+
+### Examples ###
+
+    .example1 {
+      font-size: strip(2) // -> font-size: 2;
+    }
+
+    .example2 {
+      border: strip(2px) // -> font-size: 2;
+    }
+
+    .example3 {
+      border: strip(3something) // -> font-size: 3;
+    }
+
+*/
+@function strip($v) {
+	@return ($v) / (µ($v));
+}
+
+@include describe("Strip units") {
+	@include it("Should strip different units correctly") {
+		@include should( expect( strip(-5000) ), to( equal( -5000 )));
+		@include should( expect( strip(-1.23) ), to( equal( -1.23 )));
+		@include should( expect( strip(-0.005) ), to( equal( -0.005 )));
+		@include should( expect( strip(-1) ), to( equal( -1 )));
+		@include should( expect( strip(0) ), to( equal( 0 )));
+		@include should( expect( strip(0.52) ), to( equal( 0.52 )));
+		@include should( expect( strip(22) ), to( equal( 22 )));
+
+		@include should( expect( strip(-5000rem) ), to( equal( -5000 )));
+		@include should( expect( strip(-1.23rem) ), to( equal( -1.23 )));
+		@include should( expect( strip(-0.005rem) ), to( equal( -0.005 )));
+		@include should( expect( strip(-1rem) ), to( equal( -1 )));
+		@include should( expect( strip(0rem) ), to( equal( 0 )));
+		@include should( expect( strip(0.52rem) ), to( equal( 0.52 )));
+		@include should( expect( strip(22rem) ), to( equal( 22 )));
+
+		@include should( expect( strip(-5000cr3yµ) ), to( equal( -5000 )));
+		@include should( expect( strip(-1.23cr3yµ) ), to( equal( -1.23 )));
+		@include should( expect( strip(-0.005cr3yµ) ), to( equal( -0.005 )));
+		@include should( expect( strip(-1cr3yµ) ), to( equal( -1 )));
+		@include should( expect( strip(0cr3yµ) ), to( equal( 0 )));
+		@include should( expect( strip(0.52cr3yµ) ), to( equal( 0.52 )));
+		@include should( expect( strip(22cr3yµ) ), to( equal( 22 )));
+
+	}
+}

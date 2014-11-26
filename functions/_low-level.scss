@@ -1,0 +1,158 @@
+/*  
+##`ø($value)`
+
+### Description ###
+
+Converts input to zero or zero[unit]
+
+### Parameters: ###
+
+2. __$value__ : *non-string or number* The value to be turned to zero or zero[units]. If the input has units, it will be carried over.
+
+### Usage ###
+  Can be called anywhere as a function in your sass.
+
+### Examples ###
+
+    .example1 {
+      font-size: ø(2px) // -> font-size: 0px;
+    }
+
+    .example2 {
+      border: ø(0) // -> font-size: 0;
+    }
+
+*/
+@function ø($v) {
+	@return $v * 0;
+}
+
+@include describe("ø") {
+  @include it("should return zero or zero unit") {
+  	@include should( expect( ø(-5000) ), to( equal( 0 )));
+  	@include should( expect( ø(-1.23) ), to( equal( 0 )));
+  	@include should( expect( ø(-0.005) ), to( equal( 0 )));
+  	@include should( expect( ø(-1) ), to( equal( 0 )));
+  	@include should( expect( ø(0) ), to( equal( 0 )));
+  	@include should( expect( ø(0.52) ), to( equal( 0 )));
+    @include should( expect( ø(22) ), to( equal( 0 )));
+
+  	@include should( expect( ø(-5000rem) ), to( equal( 0rem )));
+  	@include should( expect( ø(-1.23rem) ), to( equal( 0rem )));
+  	@include should( expect( ø(-0.005rem) ), to( equal( 0rem )));
+  	@include should( expect( ø(-1rem) ), to( equal( 0rem )));
+  	@include should( expect( ø(0rem) ), to( equal( 0rem )));
+  	@include should( expect( ø(0.52rem) ), to( equal( 0rem )));
+    @include should( expect( ø(22rem) ), to( equal( 0rem )));
+    @include should( expect( ø(5000rem) ), to( equal( 0rem )));
+
+    @include should( expect( ø(-5000px) ), to( equal( 0px )));
+    @include should( expect( ø(-1.23px) ), to( equal( 0px )));
+    @include should( expect( ø(-0.005px) ), to( equal( 0px )));
+    @include should( expect( ø(-1px) ), to( equal( 0px )));
+    @include should( expect( ø(0px) ), to( equal( 0px )));
+    @include should( expect( ø(0.52px) ), to( equal( 0px )));
+    @include should( expect( ø(22px) ), to( equal( 0px )));
+    @include should( expect( ø(5000px) ), to( equal( 0px )));
+
+    @include should( expect( ø(-5000em) ), to( equal( 0em )));
+    @include should( expect( ø(-1.23em) ), to( equal( 0em )));
+    @include should( expect( ø(-0.005em) ), to( equal( 0em )));
+    @include should( expect( ø(-1em) ), to( equal( 0em )));
+    @include should( expect( ø(0em) ), to( equal( 0em )));
+    @include should( expect( ø(0.52em) ), to( equal( 0em )));
+    @include should( expect( ø(22em) ), to( equal( 0em )));
+    @include should( expect( ø(5000em) ), to( equal( 0em )));
+
+    @include should( expect( ø(-5000%) ), to( equal( 0% )));
+    @include should( expect( ø(-1.23%) ), to( equal( 0% )));
+    @include should( expect( ø(-0.005%) ), to( equal( 0% )));
+    @include should( expect( ø(-1%) ), to( equal( 0% )));
+    @include should( expect( ø(0%) ), to( equal( 0% )));
+    @include should( expect( ø(0.52%) ), to( equal( 0% )));
+    @include should( expect( ø(22%) ), to( equal( 0% )));
+    @include should( expect( ø(5000%) ), to( equal( 0% )));
+
+  }
+}
+
+
+/*  
+##`µ($value)`
+
+### Description ###
+
+Converts to one or one[unit]
+
+### Parameters: ###
+
+2. __$value__ : *non-string or number* The value to be turned to one or one[units]. If the input has units, it will be carried over.
+
+### Usage ###
+  Can be called anywhere as a function in your sass.
+
+### Examples ###
+
+    .example1 {
+      font-size: µ(2) // -> font-size: 1;
+    }
+
+    .example2 {
+      border: µ(2px) // -> font-size: 1px;
+    }
+
+*/
+
+@function µ($v) {
+	@return ø($v) + 1;
+}
+
+
+@include describe("µ") {
+  @include it("should return zero or zero unit") {
+  	@include should( expect( µ(-5000) ), to( equal( 1 )));
+  	@include should( expect( µ(-1.23) ), to( equal( 1 )));
+  	@include should( expect( µ(-0.005) ), to( equal( 1 )));
+  	@include should( expect( µ(-1) ), to( equal( 1 )));
+  	@include should( expect( µ(0) ), to( equal( 1 )));
+  	@include should( expect( µ(0.52) ), to( equal( 1 )));
+    @include should( expect( µ(22) ), to( equal( 1 )));
+
+  	@include should( expect( µ(-5000rem) ), to( equal( 1rem )));
+  	@include should( expect( µ(-1.23rem) ), to( equal( 1rem )));
+  	@include should( expect( µ(-0.005rem) ), to( equal( 1rem )));
+  	@include should( expect( µ(-1rem) ), to( equal( 1rem )));
+  	@include should( expect( µ(0rem) ), to( equal( 1rem )));
+  	@include should( expect( µ(0.52rem) ), to( equal( 1rem )));
+    @include should( expect( µ(22rem) ), to( equal( 1rem )));
+    @include should( expect( µ(5000rem) ), to( equal( 1rem )));
+
+    @include should( expect( µ(-5000px) ), to( equal( 1px )));
+    @include should( expect( µ(-1.23px) ), to( equal( 1px )));
+    @include should( expect( µ(-0.005px) ), to( equal( 1px )));
+    @include should( expect( µ(-1px) ), to( equal( 1px )));
+    @include should( expect( µ(0px) ), to( equal( 1px )));
+    @include should( expect( µ(0.52px) ), to( equal( 1px )));
+    @include should( expect( µ(22px) ), to( equal( 1px )));
+    @include should( expect( µ(5000px) ), to( equal( 1px )));
+
+    @include should( expect( µ(-5000em) ), to( equal( 1em )));
+    @include should( expect( µ(-1.23em) ), to( equal( 1em )));
+    @include should( expect( µ(-0.005em) ), to( equal( 1em )));
+    @include should( expect( µ(-1em) ), to( equal( 1em )));
+    @include should( expect( µ(0em) ), to( equal( 1em )));
+    @include should( expect( µ(0.52em) ), to( equal( 1em )));
+    @include should( expect( µ(22em) ), to( equal( 1em )));
+    @include should( expect( µ(5000em) ), to( equal( 1em )));
+
+    @include should( expect( µ(-5000%) ), to( equal( 1% )));
+    @include should( expect( µ(-1.23%) ), to( equal( 1% )));
+    @include should( expect( µ(-0.005%) ), to( equal( 1% )));
+    @include should( expect( µ(-1%) ), to( equal( 1% )));
+    @include should( expect( µ(0%) ), to( equal( 1% )));
+    @include should( expect( µ(0.52%) ), to( equal( 1% )));
+    @include should( expect( µ(22%) ), to( equal( 1% )));
+    @include should( expect( µ(5000%) ), to( equal( 1% )));
+
+  }
+}

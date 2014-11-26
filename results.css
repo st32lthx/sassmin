@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/*! sassyjson - v1.1.8 - 2014-06-01 */
+/* >> Bootcamp >> */
+/*
+	## ø: zerofy
+
+	Converts input to zero or zero[unit].
+
+	Examples: ø(2) -> 0
+						ø(2px) -> 0px
+*/
+/* ## µ
+	Converts to one or one[unit]
+
+	Examples: µ(-1) -> 1
+						µ(2px) -> 2px
+*/
+/*
+## strip
+
+Stips units or stuff after the number.
+
+Example:  strip(2px) -> 2
+					strip(11%) -> 11
+					strip(2em) -> 2
+					strip(2somethingcrazy) -> 2
+
+*/
+Test Results {
+  Success: true;
+  Stats:  ✔ ✔ ✔ ✔ ✔;
+  Tests: 5;
+  Asserts: 105;
+  Passed: 5;
+  Failed: 0;
+  Skipped: 0;
+}
+
+/* << Bootcamp << */
+
+/*# sourceMappingURL=results.css.map */
